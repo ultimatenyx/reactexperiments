@@ -12,13 +12,23 @@ export default function Products(){
 	let [isLoading,setLoading] = useState(true);
 	// let gp = [];
 	useEffect(function(){
-		getProductsApi(function(res){
-			// gp=res;
-			setGp(res);
+		// getProductsApi(function(res){
+		// 	// gp=res;
+		// 	setGp(res);
+		// 	setLoading(false);
+		// });
+		// console.log(isLoading);
+		fetch("https://fakestoreapi.com/products")
+		.then((res)=>{
+			console.log(res);
+			return res.json();
+		})
+		.then((response)=>{
+			console.log(response);
+			setGp(response);
 			setLoading(false);
 		});
-	},[gp])
-	
+	},[])
 	if(isLoading){
 		return <div><img alt="loader" src="https://i.pinimg.com/originals/c7/e1/b7/c7e1b7b5753737039e1bdbda578132b8.gif" /></div>
 	}else{
