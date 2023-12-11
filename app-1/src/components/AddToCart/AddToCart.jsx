@@ -1,6 +1,10 @@
-function AddToCart({product,increaseQty,decreaseQty,cart}){
+import { useContext } from "react";
+import CartContext from "../../context/CartContext";
+
+function AddToCart({product}){
+    const {cart,increaseQty,decreaseQty} = useContext(CartContext);
     function increment(){
-        console.log("Increment");
+        // console.log("Increment");
         increaseQty(product);
     }
     function decrease(){

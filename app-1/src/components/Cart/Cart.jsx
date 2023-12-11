@@ -1,11 +1,14 @@
+import { useContext } from "react";
+import CartContext from "../../context/CartContext";
 import useWindowSize from "../../hooks/useWindowSize";
-function Cart({cart}){
+function Cart(){
+    const {cart} = useContext(CartContext);
     const cartList = cart?Object.values(cart):[];
     let {width,height} = useWindowSize();
-    console.log(width);
+    // console.log(width);
     // console.log("cartlist",cartList);
 
-    if(width>720){
+    if(width>1440){
         return (
             <div>
                 <ul>

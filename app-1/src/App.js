@@ -1,16 +1,18 @@
 import "./styles.css";
 import { useState } from "react";
-import Products from "./components/Products/Products";
+// import Products from "./components/Products/Products";
 import ProductsPage from "./pages/ProductsPage";
-import Cart from "./components/Cart";
+// import Cart from "./components/Cart";
 import CartPage from "./pages/CartPage";
-import {Switch, Routes, Route} from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
+import CartContext from "./context/CartContext";
+import NotFound from "./pages/NotFound";
 
 export default function App() {
   const [cart,setCart] = useState({});
 
   function increaseQty(product){
-    console.log(cart);
+    // console.log(cart);
     const newCart = {...cart};
     if(!newCart[product.id]){
       newCart[product.id] = {
@@ -33,25 +35,26 @@ export default function App() {
     setCart(newCart);
   }
   return (
+    <CartContext.Provider value={{cart,increaseQty,decreaseQty}}>
     <div className="App">
-      {/*
+      {
+        
         <Routes>
-      <Route path="/cart" Component={CartPage} />
-      <Route 
-        path="/" 
-        Component={ProductsPage}
-        />
-        </Routes>*/
+        <Route exact={true} path="/cart" Component={CartPage} />
+        <Route exact={true} path="/" Component={ProductsPage} />
+        <Route path="*" Component={NotFound} />
+        </Routes>
+        
       }
-        {
-// <Cart cart={cart} />
-      // <Products 
-      // increaseQty={increaseQty} 
-      // decreaseQty={decreaseQty} 
-      // cart={cart}
-        }
+      {
+        /*
+         <Cart />
+      <Products />
+        */
+      }
       
-      />
+      
     </div>
+    </CartContext.Provider>
   );
 }
