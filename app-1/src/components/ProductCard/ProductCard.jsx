@@ -1,5 +1,6 @@
 import './ProductCard.css';
-import AddToCart from '../AddToCart';
+// import AddToCart from '../AddToCart';
+import ReduxAddToCart from '../ReduxAddToCart';
 import Rating from '../Rating';
 function ProductCard({product,increaseQty,decreaseQty,cart}){
     return (<div className="card">
@@ -9,11 +10,19 @@ function ProductCard({product,increaseQty,decreaseQty,cart}){
                 rating={product.rating.rate} 
                 maxRating={5}
                 />
+                {
+                /*    
                 <AddToCart 
                 product={product}
                 increaseQty={increaseQty} 
                 decreaseQty={decreaseQty} 
                 cart={cart}
+                />
+                */
+                }
+                <ReduxAddToCart 
+                product={product}
+                
                 />
             </div>);
 }
