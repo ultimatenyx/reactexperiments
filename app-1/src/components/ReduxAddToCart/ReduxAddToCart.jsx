@@ -1,5 +1,3 @@
-import { mdiPlayBoxLock } from "@mdi/js";
-import { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 function ReduxAddToCart({product}){
